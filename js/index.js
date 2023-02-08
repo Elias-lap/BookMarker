@@ -8,17 +8,52 @@ if ( localStorage.getItem('collection')!=null){
     
 
 }
+// SiteURLInput.addEventListener('submit' , function(event){
+//     if (!SiteURLInput.value){
+//         event.preventDefault();
+//         alert('Please fill out the input')
+//     }
+// });
+
+function nameIsExsist(){
+    for ( var i = 0 ; i < MainCollection.length ;  i++){
+        if(siteNameInput.value==MainCollection[i].NameBook){
+            nameIsExsist = false
+            alert('name is exist')
+        }
+    }
+    return nameIsExsist;
+}
+
+
 
 function DataCollection(){
+    
+
     var Collection ={
         NameBook:siteNameInput.value,
         SiteBook:SiteURLInput.value
     }
+ if (nameIsExsist()){   
     MainCollection.push(Collection)
     localStorage.setItem('collection' ,JSON.stringify(MainCollection) )
     displayCollection(MainCollection)
+    }
     clearInput()
 }
+// var Collection ={
+//     NameBook:siteNameInput.value,
+//     SiteBook:SiteURLInput.value
+// }
+// MainCollection.push(Collection)
+// localStorage.setItem('collection' ,JSON.stringify(MainCollection) )
+// displayCollection(MainCollection)
+// clearInput()
+
+
+
+
+
 var count = '0'
 function displayCollection(arr){
     var trs =``
