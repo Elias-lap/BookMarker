@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div class=" container"> 
+        <h2 class=" my-5 text-gra bookmarker">Bookmarker</h2>
+        <hr>
+<div class="home-book text-center">
+    <h2 class=" fw-bold p-3">Bookmark your favorite sites</h2>
+    <label for="siteName" class="my-3 fw-bold">Site Name</label>
+    <input type="text" class="form-control w-75 m-auto bookmarker-input" id="siteName" placeholder="Bookmark Name">
+    <label for="SiteURL" class="my-3 fw-bold">Site URL</label>
+    <input type="text" class="form-control w-75 m-auto bookmarker-input" id="SiteURL" placeholder="Site URL">
+    <button class=" btn btn-primary my-3 " onclick="DataCollection()">Sumbit</button>
+
+</div>
+<table class=" table my-5 w-75 text-center m-auto">
+    <thead>
+        <th>index</th>
+        <th>Bookmark Name</th>
+        <th>Site URL</th>
+        <th></th>
+        <th></th>
+    </thead>
+    <tbody id="tbody">
+
+
+
+    </tbody>
+</table>
+<footer class="text-muted">
+    © 2019 Bookmarker Inc.
+</footer>
+    </div>
+
+ 
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.bookmarker{
+    color: #AAA;
+}
+.home-book{
+    background-color: #EEE;
+}
+.bookmarker-input{
+    transition: all;
+    box-shadow: none !important;
+}
+.bookmarker-input:focus{
+    border: black solid 2px;
+}
