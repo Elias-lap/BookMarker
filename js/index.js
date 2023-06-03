@@ -1,20 +1,11 @@
 var siteNameInput=document.getElementById(`siteName`)
 var SiteURLInput=document.getElementById(`SiteURL`)
+var Sumbit =document.getElementById('Sumbit')
 var MainCollection = []
 if ( localStorage.getItem('collection')!=null){
     MainCollection=JSON.parse(localStorage.getItem('collection'))
     displayCollection(MainCollection)
-    
-    
-
 }
-// SiteURLInput.addEventListener('submit' , function(event){
-//     if (!SiteURLInput.value){
-//         event.preventDefault();
-//         alert('Please fill out the input')
-//     }
-// });
-
 function nameIsExsist(){
     for ( var i = 0 ; i < MainCollection.length ;  i++){
         if(siteNameInput.value==MainCollection[i].NameBook){
@@ -24,36 +15,31 @@ function nameIsExsist(){
     }
     return nameIsExsist;
 }
-
-
-
 function DataCollection(){
     
+    if ( Sumbit.innerHTML=='Update'){
+        var Collection ={
+            NameBook:siteNameInput.value,
+            SiteBook:SiteURLInput.value
+        }
+        Sumbit.innerHTML='Sumbit'
+        MainCollection.splice(num,1,Collection)
+    }
+    
+    else{
+        if(nameIsExsist()){
 
-    var Collection ={
-        NameBook:siteNameInput.value,
-        SiteBook:SiteURLInput.value
+            var Collection ={
+                NameBook:siteNameInput.value,
+               SiteBook:SiteURLInput.value
+             }
+             MainCollection.push(Collection)
+        }
     }
- if (nameIsExsist()){   
-    MainCollection.push(Collection)
-    localStorage.setItem('collection' ,JSON.stringify(MainCollection) )
-    displayCollection(MainCollection)
-    }
-    clearInput()
+        localStorage.setItem('collection' ,JSON.stringify(MainCollection) )
+        displayCollection(MainCollection) 
+        clearInput()
 }
-// var Collection ={
-//     NameBook:siteNameInput.value,
-//     SiteBook:SiteURLInput.value
-// }
-// MainCollection.push(Collection)
-// localStorage.setItem('collection' ,JSON.stringify(MainCollection) )
-// displayCollection(MainCollection)
-// clearInput()
-
-
-
-
-
 var count = '0'
 function displayCollection(arr){
     var trs =``
@@ -65,6 +51,7 @@ function displayCollection(arr){
         <td>${arr[i].SiteBook}</td>
         <td><button class="btn btn-danger" onclick="Visit(${i})"id="visitBtn">Visit</button></td>
         <td><button class="btn btn-info" onclick="deletInput(${i})">Delet</button></td>
+        <td><button class="btn btn-danger" onclick="updateSite(${i})">update</button></td>
     </tr>`
     
     }
@@ -85,8 +72,14 @@ function Visit(count){
     window.open(MainCollection[count].SiteBook, "_blank");
 
 }
+var num=0
+function updateSite(index){
+    index=num
+    siteNameInput.value=MainCollection[index].NameBook
+    SiteURLInput.value=MainCollection[index].SiteBook
+    Sumbit.innerHTML='Update'
 
+    console.log('hi')
 
-// visitBtn.addEventListener("click", function() {
-//     window.open(MainCollection[count].SiteBook, "_blank");
-//   });
+}
+
